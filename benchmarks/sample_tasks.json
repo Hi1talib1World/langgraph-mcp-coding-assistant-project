@@ -1,0 +1,29 @@
+[
+  {
+    "task_id": "HumanEval/001",
+    "prompt": "Separate string into groups of nested parentheses.",
+    "target_file": "src/parentheses.py",
+    "target_function": "separate_paren_groups",
+    "buggy_code": "def separate_paren_groups(paren_string: str) -> list[str]:\n    # Buggy draft\n    return paren_string.split(' ')",
+    "fixed_code": "def separate_paren_groups(paren_string: str) -> list[str]:\n    result = []\n    current_group = []\n    current_depth = 0\n    for c in paren_string:\n        if c == '(':\n            current_depth += 1\n            current_group.append(c)\n        elif c == ')':\n            current_depth -= 1\n            current_group.append(c)\n            if current_depth == 0:\n                result.append(''.join(current_group))\n                current_group = []\n    return result",
+    "test_suite": "def test_paren():\n    assert separate_paren_groups('( ( ) ) ( )') == ['((()))', '()']"
+  },
+  {
+    "task_id": "HumanEval/002",
+    "prompt": "Truncate a floating point number to decimal part.",
+    "target_file": "src/truncate.py",
+    "target_function": "truncate_number",
+    "buggy_code": "def truncate_number(number: float) -> float:\n    return float(int(number))",
+    "fixed_code": "def truncate_number(number: float) -> float:\n    return round(number % 1.0, 5)",
+    "test_suite": "def test_truncate():\n    assert truncate_number(3.5) == 0.5"
+  },
+  {
+    "task_id": "HumanEval/003",
+    "prompt": "Check if total balance drops below zero in transaction list.",
+    "target_file": "src/balance.py",
+    "target_function": "below_zero",
+    "buggy_code": "def below_zero(operations: list[int]) -> bool:\n    return sum(operations) < 0",
+    "fixed_code": "def below_zero(operations: list[int]) -> bool:\n    balance = 0\n    for op in operations:\n        balance += op\n        if balance < 0:\n            return True\n    return False",
+    "test_suite": "def test_below_zero():\n    assert below_zero([1, 2, -4, 5]) == True\n    assert below_zero([1, 2, 3]) == False"
+  }
+]

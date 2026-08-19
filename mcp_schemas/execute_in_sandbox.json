@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "execute_in_sandbox",
+  "description": "Runs tests and arbitrary shell commands inside an isolated micro-VM / container sandbox with configurable network egress.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "command": {
+        "type": "string",
+        "description": "Shell command to execute (e.g., 'pytest tests/ --json-report')."
+      },
+      "workdir": {
+        "type": "string",
+        "default": "/workspace",
+        "description": "Working directory path inside the sandbox container."
+      },
+      "timeout_ms": {
+        "type": "integer",
+        "default": 30000,
+        "description": "Maximum execution time in milliseconds."
+      },
+      "network_enabled": {
+        "type": "boolean",
+        "default": false,
+        "description": "If false, restricts all outbound socket creation & network egress."
+      },
+      "environment_variables": {
+        "type": "object",
+        "additionalProperties": { "type": "string" },
+        "description": "Environment variables passed into sandbox environment."
+      }
+    },
+    "required": ["command"]
+  }
+}

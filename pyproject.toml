@@ -1,0 +1,62 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ast-healing-coder"
+version = "0.1.0"
+description = "Self-healing autonomous coding agent powered by LangGraph, MCP, & AST patching."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "Antigravity Open Source Team", email = "devs@antigravity.ai" }
+]
+keywords = [
+    "langgraph",
+    "agentic-ai",
+    "ast",
+    "mcp",
+    "self-healing",
+    "coding-assistant",
+    "seccomp",
+    "sandbox"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = [
+    "langgraph>=0.2.0",
+    "langchain-core>=0.3.0",
+    "pydantic>=2.0.0",
+    "rich>=13.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
+    "build>=1.0.0",
+    "twine>=5.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/hicham-dev/langgraph-mcp-coding-assistant"
+Repository = "https://github.com/hicham-dev/langgraph-mcp-coding-assistant"
+Documentation = "https://github.com/hicham-dev/langgraph-mcp-coding-assistant#readme"
+Bug-Tracker = "https://github.com/hicham-dev/langgraph-mcp-coding-assistant/issues"
+
+[project.scripts]
+ast-coder = "ast_healing_coder.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ast_healing_coder", "src/patcher", "src/sandbox"]

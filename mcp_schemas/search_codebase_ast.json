@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "search_codebase_ast",
+  "description": "Searches codebase using Abstract Syntax Tree (AST) node patterns rather than plain text matching.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "language": {
+        "type": "string",
+        "enum": ["python", "typescript", "javascript", "go"],
+        "description": "Target language parser."
+      },
+      "query_pattern": {
+        "type": "string",
+        "description": "AST pattern query (e.g. 'FunctionDef[name=calculate_discount]')."
+      },
+      "target_node_types": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["FunctionDef", "ClassDef", "Import", "Call", "AsyncFunctionDef"]
+        },
+        "description": "Filter by specific AST node types."
+      },
+      "file_glob": {
+        "type": "string",
+        "default": "**/*.py",
+        "description": "Glob pattern of files to scan."
+      }
+    },
+    "required": ["language", "query_pattern"]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "defaultAction": "SCMP_ACT_ERRNO",
+  "architectures": [
+    "SCMP_ARCH_X86_64",
+    "SCMP_ARCH_X86",
+    "SCMP_ARCH_AARCH64"
+  ],
+  "syscalls": [
+    {
+      "names": [
+        "read", "write", "open", "openat", "close", "fstat", "lstat", "stat",
+        "lseek", "mmap", "mprotect", "munmap", "brk", "rt_sigaction",
+        "rt_sigprocmask", "rt_sigreturn", "ioctl", "pread64", "pwrite64",
+        "readv", "writev", "access", "pipe", "select", "sched_yield",
+        "mremap", "msync", "mincore", "madvise", "shmget", "shmat", "shmdt",
+        "dup", "dup2", "pause", "nanosleep", "getitimer", "alarm", "setitimer",
+        "getpid", "sendfile", "exit", "wait4", "kill", "uname", "fcntl",
+        "flock", "fsync", "fdatasync", "truncate", "ftruncate", "getdents",
+        "getcwd", "chdir", "fchdir", "rename", "mkdir", "rmdir", "creat",
+        "link", "unlink", "symlink", "readlink", "chmod", "fchmod", "chown",
+        "fchown", "lchown", "umask", "gettimeofday", "getrlimit", "getrusage",
+        "sysinfo", "times", "getuid", "getgid", "setuid", "setgid", "geteuid",
+        "getegid", "setpgid", "getppid", "getpgrp", "setsid", "setreuid",
+        "setregid", "getgroups", "setgroups", "arch_prctl", "set_tid_address",
+        "futex", "sched_getaffinity", "gettid", "exit_group", "epoll_create",
+        "epoll_ctl", "epoll_wait", "clock_gettime", "clock_getres", "clock_nanosleep"
+      ],
+      "action": "SCMP_ACT_ALLOW"
+    },
+    {
+      "names": [
+        "socket", "bind", "connect", "listen", "accept", "accept4",
+        "getsockname", "getpeername", "socketpair", "sendto", "recvfrom",
+        "sendmsg", "recvmsg", "shutdown", "setsockopt", "getsockopt"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "comment": "BLOCK ALL NETWORK SOCKET SYSCALLS DURING SANDBOX TEST EXECUTION"
+    },
+    {
+      "names": [
+        "ptrace", "process_vm_readv", "process_vm_writev", "kexec_load", "reboot"
+      ],
+      "action": "SCMP_ACT_ERRNO",
+      "comment": "BLOCK DANGEROUS SYSTEM MANIPULATION AND PROCESS TRACING"
+    }
+  ]
+}

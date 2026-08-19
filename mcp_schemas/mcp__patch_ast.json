@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "patch_ast",
+  "description": "Surgically replaces a specific function or class node in a target Python file using AST parsing without full-file rewrites.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file_path": {
+        "type": "string",
+        "description": "Path to the target Python source file."
+      },
+      "target_node_name": {
+        "type": "string",
+        "description": "Name of the target function (FunctionDef) or class (ClassDef) node to patch."
+      },
+      "replacement_code": {
+        "type": "string",
+        "description": "The complete Python code for the new function or class replacement."
+      },
+      "validate_syntax": {
+        "type": "boolean",
+        "default": true,
+        "description": "If true, validates that the patched file parses cleanly before saving."
+      }
+    },
+    "required": ["file_path", "target_node_name", "replacement_code"]
+  }
+}

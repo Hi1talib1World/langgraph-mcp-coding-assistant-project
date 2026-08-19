@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "mcp__sandbox_execute_tests",
+  "description": "Executes unit tests and integration test suites within a secure, isolated containerized sandbox environment.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "test_framework": {
+        "type": "string",
+        "enum": ["pytest", "jest", "unittest", "vitest"],
+        "description": "The test runner framework to execute."
+      },
+      "target_directory": {
+        "type": "string",
+        "default": "tests/",
+        "description": "Directory or specific file containing tests."
+      },
+      "timeout_seconds": {
+        "type": "integer",
+        "default": 30,
+        "description": "Maximum execution time in seconds before process termination."
+      },
+      "environment_variables": {
+        "type": "object",
+        "additionalProperties": { "type": "string" },
+        "description": "Optional environment variables for test execution."
+      }
+    },
+    "required": ["test_framework"]
+  }
+}

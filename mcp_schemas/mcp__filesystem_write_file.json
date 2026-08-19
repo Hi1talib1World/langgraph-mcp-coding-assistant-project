@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "mcp__filesystem_write_file",
+  "description": "Writes or overwrites a file on the target filesystem workspace with specified content.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "file_path": {
+        "type": "string",
+        "description": "Relative or absolute path of the file to write (e.g. 'src/utils/calculator.py')."
+      },
+      "content": {
+        "type": "string",
+        "description": "The complete source code or raw file content to write."
+      },
+      "overwrite": {
+        "type": "boolean",
+        "default": true,
+        "description": "Whether to overwrite existing file content."
+      }
+    },
+    "required": ["file_path", "content"]
+  }
+}

@@ -1,0 +1,13 @@
+# Ephemeral Sandbox Base Container Image for ast-healing-coder
+FROM python:3.11-slim
+
+WORKDIR /workspace
+
+# Install pytest and basic toolchain
+RUN pip install --no-cache-dir pytest ruff mypy
+
+# Security: Default non-root execution user
+RUN useradd -m -u 1000 sandbox
+USER sandbox
+
+CMD ["python", "-c", "print('Sandbox Base Ready')"]

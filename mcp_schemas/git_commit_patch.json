@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "git_commit_patch",
+  "description": "Applies a unified patch diff to the workspace repository and creates a signed git commit.",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "patch_diff": {
+        "type": "string",
+        "description": "Unified git diff format string containing code alterations."
+      },
+      "commit_message": {
+        "type": "string",
+        "description": "Structured git commit message detailing feature implementation."
+      },
+      "branch_name": {
+        "type": "string",
+        "default": "agent/feature-implementation",
+        "description": "Target git branch name."
+      },
+      "author_name": {
+        "type": "string",
+        "default": "Autonomous Coder Agent",
+        "description": "Author name for git log metadata."
+      }
+    },
+    "required": ["patch_diff", "commit_message"]
+  }
+}
