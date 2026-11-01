@@ -2,7 +2,7 @@
 AST-Healing-Coder: Autonomous Self-Healing Coding Agent Powered by LangGraph, MCP, & AST Patching.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 __author__ = "Antigravity Open Source Team"
 __license__ = "MIT"
 
