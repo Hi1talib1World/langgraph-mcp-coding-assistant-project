@@ -86,8 +86,8 @@ pip install ast-healing-coder
 Or install locally in editable mode:
 
 ```bash
-git clone https://github.com/hicham-dev/langgraph-mcp-coding-assistant.git
-cd langgraph-mcp-coding-assistant
+git clone https://github.com/Hi1talib1World/langgraph-mcp-coding-assistant-project.git
+cd langgraph-mcp-coding-assistant-project
 pip install -e .
 ```
 

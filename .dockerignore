@@ -1,0 +1,27 @@
+# Ignore secrets and environment configs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Git and IDE
+.git
+.github
+.vscode
+.idea
+
+# Python artifacts
+__pycache__
+*.py[cod]
+*$py.class
+.pytest_cache
+.coverage
+coverage.xml
+
+# Build and virtual environments
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
